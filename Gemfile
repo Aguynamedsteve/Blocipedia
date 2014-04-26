@@ -36,8 +36,11 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+gem 'bootstrap-sass', '~> 3.1.1'
 
 gem 'devise'
+
+gem 'figaro'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
