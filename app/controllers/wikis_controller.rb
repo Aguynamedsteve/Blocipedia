@@ -25,7 +25,7 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
-    if @wiki.update(params.require(:wiki).permit(:body))
+    if @wiki.update(wiki_params)
       redirect_to @wiki
     else
       flash[:error] = "Error saving. Please try again."

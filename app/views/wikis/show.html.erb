@@ -1,6 +1,6 @@
 <div>
-<h1><%= @wiki.title %></h1>
-<h1><%= @wiki.body %></h1>
+<h1><%= markdown @wiki.title %></h1>
+<p><%= markdown @wiki.body %></p>
 </div>
 
 <div><%= link_to "Edit #{@wiki.title} wiki", edit_wiki_path(@wiki), class: 'btn btn-primary' %></div>
