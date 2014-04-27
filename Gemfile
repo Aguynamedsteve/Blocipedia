@@ -45,7 +45,14 @@ gem 'figaro'
 
 gem 'will_paginate', '~> 3.0.5'
 
+<<<<<<< HEAD
 gem 'redcarpet'
+=======
+gem 'friendly_id'
+
+gem 'redcarpet'
+
+>>>>>>> collabo
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

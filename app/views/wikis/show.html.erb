@@ -1,6 +1,13 @@
 <div>
 <h1><%= markdown @wiki.title %></h1>
+<<<<<<< HEAD
 <p><%= markdown @wiki.body %></p>
+=======
+<h1><%= markdown @wiki.body %></h1>
+>>>>>>> collabo
 </div>
 
-<div><%= link_to "Edit #{@wiki.title} wiki", edit_wiki_path(@wiki), class: 'btn btn-primary' %></div>
+<div>
+  <%= link_to "Edit #{@wiki.title} wiki", edit_wiki_path(@wiki), class: 'btn btn-primary' %>
+  <%= link_to "Back", wikis_path, :class => 'btn btn-large btn-primary' %>
+</div>

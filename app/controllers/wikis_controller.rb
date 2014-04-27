@@ -9,7 +9,10 @@ class WikisController < ApplicationController
   end
 
   def show
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.friendly.find(params[:id])
+    if request.path != wiki_path(@wiki)
+      redirect_to @wiki, status: :moved_permanently
+    end
   end
 
   def create
@@ -24,7 +27,11 @@ class WikisController < ApplicationController
   end
 
   def update
+<<<<<<< HEAD
     @wiki = Wiki.find(params[:id])
+=======
+    @wiki = Wiki.friendly.find(params[:id])
+>>>>>>> collabo
     if @wiki.update(wiki_params)
       redirect_to @wiki
     else
@@ -34,11 +41,11 @@ class WikisController < ApplicationController
   end
 
   def edit
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.friendly.find(params[:id])
   end
 
   def destroy
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.friendly.find(params[:id])
     name = Wiki.name
     #authorize @wiki
 
@@ -56,7 +63,6 @@ private
   def wiki_params
     params.require(:wiki).permit(:title, :body)
   end
-
 end
 
 
