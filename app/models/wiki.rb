@@ -7,7 +7,7 @@ class Wiki < ActiveRecord::Base
   validates :body, length: { minimum: 20 }, presence: true
 
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :history]
 
   def should_generate_new_friendly_id?
     new_record?
