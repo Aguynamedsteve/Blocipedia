@@ -42,6 +42,8 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'devise'
 
 gem 'figaro'
+
+gem 'will_paginate', '~> 3.0.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

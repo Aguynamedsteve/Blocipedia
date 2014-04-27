@@ -1,7 +1,7 @@
 class WikisController < ApplicationController
   def index
     @wiki = Wiki.new
-    @wikis = Wiki.all
+    @wikis = Wiki.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
@@ -17,7 +17,7 @@ class WikisController < ApplicationController
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
-      redirect_to wikis_path
+      redirect_to @wiki
     else
       render "new"
     end
