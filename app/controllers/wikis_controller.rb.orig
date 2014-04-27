@@ -27,7 +27,11 @@ class WikisController < ApplicationController
   end
 
   def update
+<<<<<<< HEAD
+    @wiki = Wiki.find(params[:id])
+=======
     @wiki = Wiki.friendly.find(params[:id])
+>>>>>>> collabo
     if @wiki.update(wiki_params)
       redirect_to @wiki
     else

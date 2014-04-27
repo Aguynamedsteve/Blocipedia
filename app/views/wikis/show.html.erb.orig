@@ -1,6 +1,10 @@
 <div>
 <h1><%= markdown @wiki.title %></h1>
+<<<<<<< HEAD
 <p><%= markdown @wiki.body %></p>
+=======
+<h1><%= markdown @wiki.body %></h1>
+>>>>>>> collabo
 </div>
 
 <div>
