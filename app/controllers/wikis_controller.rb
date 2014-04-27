@@ -1,7 +1,7 @@
 class WikisController < ApplicationController
   def index
     @wiki = Wiki.new
-    @wikis = current_user.wikis
+    @wikis = Wiki.all
   end
 
   def new
@@ -13,23 +13,42 @@ class WikisController < ApplicationController
   end
 
   def create
-     @wiki = current_user.wikis.build(wiki_params)
+     @wiki = Wiki.new(wiki_params)
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
-      redirect_to wikis_path#, flash[:notice] = "Wiki was saved."
+      redirect_to wikis_path
     else
       render "new"
     end
   end
 
   def update
+    @wiki = Wiki.find(params[:id])
+    if @wiki.update(params.require(:wiki).permit(:body))
+      redirect_to @wiki
+    else
+      flash[:error] = "Error saving. Please try again."
+      render :edit
+    end
   end
 
   def edit
+    @wiki = Wiki.find(params[:id])
   end
 
-  def delete
+  def destroy
+    @wiki = Wiki.find(params[:id])
+    name = Wiki.name
+    #authorize @wiki
+
+    if @wiki.destroy
+      flash[:notice] = "\"#{name}\" was deleted successfully."
+      redirect_to wikis_path
+    else
+      flash[:error] = "There was an error deleting the topic."
+      render :show
+    end
   end
 
 private

@@ -1,13 +1,13 @@
 <div>
 
-<h3>My wikis</h3>
+<h3>Public wikis</h3>
 <table class="table">
   <tbody>
     <% @wikis.each do |wiki| %> 
       <tr>
         <td><%= link_to wiki.title, wiki %></td>
-        <td>edit</td> 
-        <td>delete</td>
+        <td><%= link_to "edit", edit_wiki_path(wiki) %></td> 
+        <td><%= link_to "delete", wiki, method: :delete %></td>
         <td>export</td>
       </tr>
     <% end %>
@@ -15,10 +15,5 @@
 </table> 
 </div>
   <div>
-    <h3>Create a new wiki</h3>
-      <%= form_for @wiki, url: wikis_path(@wiki) do |f| %>
-      <%= f.label :title %>: <%= f.text_field :title, autofocus: true %>
-      <%= f.label :body %>: <%= f.text_field :body %>
-      <%= f.submit "Button Title", class: 'btn btn-success' %>
-      <% end %>
+    <%= link_to "New Wiki", wikis_new_path, class: 'btn btn-primary' %>
   </div>
