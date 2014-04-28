@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
 has_many :wikis
 
+  def role?(base_role)
+    role == base_role.to_s
+  end
 end
 
 
