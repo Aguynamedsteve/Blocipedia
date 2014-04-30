@@ -1,6 +1,5 @@
 <div>
-
-<h3>Public wikis</h3>
+<h3>All wikis</h3>
 <table class="table">
   <tbody>
     <% @wikis.each do |wiki| %> 
@@ -8,7 +7,13 @@
         <td><%= link_to wiki.title, wiki %></td>
         <td><%= link_to "edit", edit_wiki_path(wiki) %></td> 
         <td><%= link_to "delete", wiki, method: :delete %></td>
-        <td>export</td>
+        <td>
+          <% if wiki.private? %>
+            <p>Private</p>
+          <% else %>
+            <p>Public</p>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -16,5 +21,7 @@
 <%= will_paginate @wikis %>
 </div>
   <div>
+    <% if policy(Wiki.new).create? %>
     <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-primary' %>
+    <% end %>
   </div>

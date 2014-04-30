@@ -1,0 +1,25 @@
+<h3>Add Collaborator</h3>
+ 
+<table class="table">
+  <tbody>
+   <% @users.each  do |user| %>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td>
+        <%= form_for [@wiki, Collaborator.new] do |f| %>
+          <%= f.hidden_field :user_id, :value => user.id %>
+          <% unless @wiki.collaborators.select("user_id").to_a.include? user.id %>
+            <%= f.submit "Add as collaborator", class: 'btn btn-primary' %>          
+          <% end %>
+        <% end %>
+        <% if @wiki.collaborators.select("user_id").to_a.include? user.id %>
+        <% c = Collaborator.where(user_id: :user.id, :wiki_id => @wiki.id).last %>
+        <%= button_to 'Delete collaborator', wiki_collaborator_path(@wiki, c), method: :delete, :confirm => 'Are you sure?', class: 'btn btn-danger'  %>
+      <% end %>
+      </td>  
+  </tbody>
+  <% end %>
+</table> 
+  <div>
+    <%= link_to "Back", :back, class: 'btn btn-primary' %>
+  </div>

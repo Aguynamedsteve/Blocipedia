@@ -1,5 +1,16 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#wikis' do
+    it 'shows wikis' do
+      user = FactoryGirl.create :user
+      wiki = FactoryGirl.create :wiki, user_id: user.id
+
+      expect(user.wikis.count).to eq(1)
+    end
+  end
 end
+
+
+
+

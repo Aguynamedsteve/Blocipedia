@@ -5,9 +5,16 @@
       <% f.label :title -%>
       <%= f.text_area :title, rows: 1, class: 'form-control', placeholder: "Enter wiki title" %>
       <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
+      <% if policy(@wiki).destroy? %>
+      <%= f.label "Private" %> <br />
+      <%= f.check_box :private, {}, true, false %>
+      <% end %>
     <br />
     <%= f.submit "Save", class: 'btn btn-success' %>
-    <%= link_to "Back", wikis_path, :class => 'btn btn-large btn-primary' %>
-  </div>
+    <%= link_to "Back", wikis_path, class: 'btn btn-primary' %>
+    <% if @wiki.private? && policy(@wiki).destroy? %>
+    <%= link_to "Add Collaborators", new_wiki_collaborator_path(@wiki), class: 'btn btn-primary' %>
+    <% end %>
   <% end %>
+  </div>
    

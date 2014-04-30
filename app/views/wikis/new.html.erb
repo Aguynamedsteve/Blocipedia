@@ -1,8 +1,14 @@
-<div>
+  <div class="form-group">
     <h3>Create a new wiki</h3>
       <%= form_for @wiki, url: wikis_path(@wiki) do |f| %>
-      <%= f.label :title %>: <%= f.text_field :title, autofocus: true %>
-      <%= f.label :body %>: <%= f.text_field :body %>
-      <%= f.submit "Button Title", class: 'btn btn-success' %>
+      <%= f.text_area :title, rows: 1, class: 'form-control', placeholder: "Enter wiki title" %>
+      <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
+      <%= f.label "Private" %> <br />
+      <%= f.check_box :private, {}, true, false %> <br />
+    <br />
+      
+      <%= f.submit "Save", class: 'btn btn-success' %>
       <% end %>
   </div>
+
+   

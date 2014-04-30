@@ -1,9 +1,17 @@
 <div>
 <h1><%= markdown @wiki.title %></h1>
-<p><%= markdown @wiki.body %></p>
+<% if @wiki.private? %>
+  <small>Private wiki</small>
+<% end %>
+<div><%= markdown @wiki.body %></div>
 </div>
-
-<div>
-  <%= link_to "Edit #{@wiki.title} wiki", edit_wiki_path(@wiki), class: 'btn btn-primary' %>
-  <%= link_to "Back", wikis_path, :class => 'btn btn-large btn-primary' %>
-</div>
+    
+    <div>
+      <% if @wiki.private? == false || (policy(@wiki).destroy? && policy(@wiki).update?) %>
+      <%= link_to "Edit #{@wiki.title} wiki", edit_wiki_path(@wiki), class: 'btn btn-primary' %>
+      <% end %>
+      <% if policy(@wiki).destroy? && @wiki.private? %>
+      <%= link_to "Add Collaborators", new_wiki_collaborator_path(@wiki), class: 'btn btn-primary' %>
+      <% end %>
+      <%= link_to "Back", wikis_path, class: 'btn btn-large btn-success' %>
+    </div>
