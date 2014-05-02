@@ -3,8 +3,8 @@ class Wiki < ActiveRecord::Base
   has_many :collaborators
   has_many :users, through: :collaborators 
 
-  #default_scope { order('title ASC') }
-  scope :visible_to, ->(user) { user ? scoped : joins(:wiki).where('wiki.private' => false) }
+  #scope :visible_to, ->(user) { user ? scoped : joins(:wiki).where('wiki.private' => false) }
+  scope :public_wikis, -> { where(Wiki.arel_table[:private].eq(false).or(Wiki.arel_table[:private].eq(nil))) }
 
   validates :title, length: { minimum: 5 }, presence: true
   validates :body, length: { minimum: 20 }, presence: true

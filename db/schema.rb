@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429020033) do
+ActiveRecord::Schema.define(version: 20140501224926) do
 
   create_table "collaborators", force: true do |t|
     t.datetime "created_at"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20140429020033) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
-    t.boolean  "private"
+    t.boolean  "private",    default: false, null: false
   end
 
   add_index "wikis", ["slug"], name: "index_wikis_on_slug"

@@ -4,25 +4,36 @@ class WikiPolicy < ApplicationPolicy
     true
   end
 
-  def new
-    @wiki = Wiki.new
-    authorize @wiki
+  def new?
+    user.present?    
   end
 
-  def destroy
+  def destroy?
     destroy?
   end
 
-  def edit
+  def edit?
     update? 
   end
 
-  def update
+  def update?
     user.present? && (record.user == user || user.role?(:admin))
-    authorize @wiki
   end
 
-  def create
+  def create?
     user.present?    
+  end
+
+  class Scope
+    attr_reader :scope 
+
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
+    end  
+    
+    def resolve
+      scope.public_wikis
+    end
   end
 end

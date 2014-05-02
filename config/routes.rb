@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
    resources :home, only: [:index]
 
+   resources :charges, only: [:new, :create]
+
    resources :wikis do
     resources :collaborators
   end

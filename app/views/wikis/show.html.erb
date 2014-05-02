@@ -7,7 +7,7 @@
 </div>
     
     <div>
-      <% if @wiki.private? == false || (policy(@wiki).destroy? && policy(@wiki).update?) %>
+      <% if policy(@wiki).update? %>
       <%= link_to "Edit #{@wiki.title} wiki", edit_wiki_path(@wiki), class: 'btn btn-primary' %>
       <% end %>
       <% if policy(@wiki).destroy? && @wiki.private? %>

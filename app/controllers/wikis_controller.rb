@@ -1,12 +1,11 @@
 class WikisController < ApplicationController
   def index
     @wiki = Wiki.new
-    @wikis = Wiki.paginate(:page => params[:page], :per_page => 10)
+    @wikis = policy_scope(Wiki).paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
     @wiki = Wiki.new
-    authorize @wiki
   end
 
   def show
