@@ -1,7 +1,7 @@
 class WikiPolicy < ApplicationPolicy
 
   def index?
-    true
+    false
   end
 
   def new?
@@ -9,19 +9,19 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def destroy?
-    destroy?
-  end
-
-  def edit?
-    update? 
-  end
-
-  def update?
     user.present? && (record.user == user || user.role?(:admin))
   end
 
+  def edit?
+    update?  
+  end
+
+  def update?
+    user.present? 
+  end
+
   def create?
-    user.present?    
+    new?     
   end
 
   class Scope

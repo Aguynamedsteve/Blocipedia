@@ -2,7 +2,7 @@
  
 <table class="table">
   <tbody>
-   <% @users.each  do |user| %>
+    <% @users.each  do |user| %>
       <td><%= user.name %></td>
       <td><%= user.email %></td>
       <td>
@@ -15,11 +15,11 @@
         <% if @wiki.collaborators.select("user_id").to_a.include? user.id %>
         <% c = Collaborator.where(user_id: :user.id, :wiki_id => @wiki.id).last %>
         <%= button_to 'Delete collaborator', wiki_collaborator_path(@wiki, c), method: :delete, :confirm => 'Are you sure?', class: 'btn btn-danger'  %>
-      <% end %>
+        <% end %>
       </td>  
+    <% end %>
   </tbody>
-  <% end %>
 </table> 
   <div>
-    <%= link_to "Back", :back, class: 'btn btn-primary' %>
+    <%= link_to "Back", wikis_path, class: 'btn btn-primary' %>
   </div>

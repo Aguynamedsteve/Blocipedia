@@ -12,6 +12,9 @@ class Wiki < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
 
+  #u.wikis.includes(:collaborators).where("collaborators.user_id" => u.id)
+
+
   def should_generate_new_friendly_id?
     new_record?
   end

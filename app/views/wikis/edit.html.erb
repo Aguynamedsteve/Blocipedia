@@ -5,7 +5,8 @@
       <% f.label :title -%>
       <%= f.text_area :title, rows: 1, class: 'form-control', placeholder: "Enter wiki title" %>
       <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
-      <% if policy(@wiki).destroy? %>
+      <%# if policy(@wiki).destroy? %>
+      <% if @user.role == "premium" && policy(@wiki).destroy? %>
       <%= f.label "Private" %> <br />
       <%= f.check_box :private, {}, true, false %>
       <% end %>

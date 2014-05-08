@@ -1,10 +1,14 @@
 class WikisController < ApplicationController
   def index
+    #binding.pry 
+    @user = current_user
     @wiki = Wiki.new
     @wikis = policy_scope(Wiki).paginate(:page => params[:page], :per_page => 10)
+    #@my_wikis = Wiki.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
+    @user = current_user
     @wiki = Wiki.new
   end
 
@@ -41,6 +45,7 @@ class WikisController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @wiki = Wiki.friendly.find(params[:id])
     authorize @wiki
   end

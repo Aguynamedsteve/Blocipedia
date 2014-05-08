@@ -49,3 +49,19 @@ td.size {
   width: 50px;
 }
 
+.left{
+float:left;
+text-align:left;
+position:absolute;
+width:68%;
+
+}
+.right{
+float:right;
+position:relative;
+width:22%;
+height:400px;
+
+pre {
+  text-align: left;
+}

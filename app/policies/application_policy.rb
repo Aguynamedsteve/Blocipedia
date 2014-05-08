@@ -31,7 +31,7 @@ class ApplicationPolicy
 #  end
 #
 #  def destroy?
-#    user.present? && (record.user == user && user.role?(:admin) || user.role?(:member))
+#    user.present? && (record.user == user || user.role?(:admin))
 #  end
 #
 #  def scope

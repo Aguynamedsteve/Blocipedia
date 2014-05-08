@@ -1,25 +1,29 @@
 <div class="jumbotron">
   <% if user_signed_in? %>
     <h1>Welcome back</h1>
-    <p class="lead">
-      Create and share Markdown Wikis
-    </p>
-    <%= link_to "Wikis", wikis_path, :class => 'btn btn-large btn-success' %>
-    <%= link_to "Premium account", new_charge_path, class: 'btn btn-success' %>
-    <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'btn btn-large btn-danger' %>
+      <p class="lead">
+        Create and share Markdown Wikis
+      </p>
+        <%= link_to "Wikis", wikis_path, :class => 'btn btn-large btn-success' %>
+        <% unless current_user.role? :premium %>
+        <%= link_to "Premium account", new_charge_path, class: 'btn btn-success' %>
+        <% end %>
+        <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'btn btn-large btn-danger' %>
   <% else %>
     <h1>Welcome</h1>
-    <p class="lead">
-      <h2>Create and share Markdown Wikis</h2>
-    </p>
-    <div class="row-fluid">
-      <div class="span6">
-        <%= link_to "Sign In", new_user_session_path, :class => "btn btn-success" %>
-        <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-success" %>
-        <%= link_to "Public Wikis", wikis_path, :class => 'btn btn-large btn-primary' %>
-      </div>
-    </div>
+      <p class="lead">
+        <h2>Create and share Markdown Wikis</h2>
+      </p>
+        <div class="row-fluid">
+          <div class="span6">
+            <%= link_to "Sign In", new_user_session_path, :class => "btn btn-success" %>
+            <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-success" %>
+            <%= link_to "Public Wikis", wikis_path, :class => "btn btn-primary" %>
+          </div>
+        </div>
   <% end %>
 </div>
+
+
 
 

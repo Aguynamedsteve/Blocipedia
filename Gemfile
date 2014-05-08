@@ -38,6 +38,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'pry-rails'
+  gem 'pry-plus'
 end
 
 gem 'bootstrap-sass', '~> 3.1.1'
@@ -55,6 +57,7 @@ gem 'redcarpet'
 gem 'pundit'
 
 gem 'stripe'
+
 
 
 
