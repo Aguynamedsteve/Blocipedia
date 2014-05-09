@@ -4,16 +4,15 @@
       <span>Amount: $5.00</span>
     </label>
   </article>
-    <form action="/charge" method="POST">
+    <%= hidden_field_tag :amount, @amount %>
       <script
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-        data-image="/square-image.png"
-        data-name="Demo Site"
-        data-description="2 widgets ($5.00)"
+        data-key=<%= Rails.configuration.stripe[:publishable_key] %>
+        data-image="http://www.officialpsds.com/images/thumbs/Dollar-sign-psd30864.png"
+        data-name="Premium Subscription"
+        data-description="$5.00"
         data-amount="500">
       </script>
-    </form>
 <% end %>
   
   

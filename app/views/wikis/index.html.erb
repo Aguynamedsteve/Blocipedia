@@ -4,28 +4,41 @@
       <h3><%= current_user.name %>'s wikis</h3>
         <table class="table">
           <tbody>
-            <% @wikis.each do |wiki| %> 
-            <% if policy(wiki).edit? %>
-              <tr>
-                <td><%= link_to wiki.title, wiki %></td>
-                <td><%= link_to "edit", edit_wiki_path(wiki) %></td> 
-                <td><%= link_to "delete", wiki, method: :delete %></td>
-                <td>
-                  <% if wiki.private? %>
-                    <p>Private</p>
-                  <% else %>
-                    <p>Public</p>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
+            <% @private_wikis.each do |wiki| %> 
+              <% if policy(wiki).edit? %>
+                <tr>
+                  <td><%= link_to wiki.title, wiki %></td>
+                  <td><%= link_to "edit", edit_wiki_path(wiki) %></td> 
+                  <td><%= link_to "delete", wiki, method: :delete %></td>
+                  <td>
+                    <% if wiki.private? %>
+                      <p>Private</p>
+                    <% else %>
+                      <p>Public</p>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+                <% @wikis.each do |wiki| %> 
+                  <tr>
+                    <td><%= link_to wiki.title, wiki %></td>
+                    <td><%= link_to "edit", edit_wiki_path(wiki) %></td> 
+                    <td><%= link_to "delete", wiki, method: :delete %></td>
+                    <td>
+                      <% if wiki.private? %>
+                        <p>Private</p>
+                      <% else %>
+                        <p>Public</p>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
             <% end %>
           </tbody>
         </table> 
-      <%= will_paginate @my_wikis %>
+      <%= will_paginate @wikis %>
     </div>
   <% end %>
-  <div>
 
   <% unless @user.present? %>
     <div>
@@ -57,11 +70,6 @@
           </tbody>
         </table> 
       <%= will_paginate @wikis %>
-  <% end %>
-      <div>
-        <% if policy(Wiki.new).create? %>
-        <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-primary' %>
-        <% end %>
-      </div>
     </div>
+  <% end %>
 </div>  

@@ -3,6 +3,7 @@ class Wiki < ActiveRecord::Base
   has_many :collaborators
   has_many :users, through: :collaborators 
 
+  #u.wikis.includes(:collaborators).where("collaborators.user_id" => u.id)
   #scope :visible_to, ->(user) { user ? scoped : joins(:wiki).where('wiki.private' => false) }
   scope :public_wikis, -> { where(Wiki.arel_table[:private].eq(false).or(Wiki.arel_table[:private].eq(nil))) }
 
@@ -12,7 +13,6 @@ class Wiki < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
 
-  #u.wikis.includes(:collaborators).where("collaborators.user_id" => u.id)
 
 
   def should_generate_new_friendly_id?
