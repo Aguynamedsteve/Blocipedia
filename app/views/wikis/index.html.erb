@@ -19,25 +19,26 @@
                   </td>
                 </tr>
               <% end %>
-                <% @wikis.each do |wiki| %> 
-                  <tr>
-                    <td><%= link_to wiki.title, wiki %></td>
-                    <td><%= link_to "edit", edit_wiki_path(wiki) %></td> 
-                    <td><%= link_to "delete", wiki, method: :delete %></td>
-                    <td>
-                      <% if wiki.private? %>
-                        <p>Private</p>
-                      <% else %>
-                        <p>Public</p>
-                      <% end %>
-                    </td>
-                  </tr>
-                <% end %>
             <% end %>
+              <% @wikis.each do |wiki| %> 
+                <tr>
+                  <td><%= link_to wiki.title, wiki %></td>
+                  <td><%= link_to "edit", edit_wiki_path(wiki) %></td> 
+                  <td><%= link_to "delete", wiki, method: :delete %></td>
+                  <td>
+                    <% if wiki.private? %>
+                      <p>Private</p>
+                    <% else %>
+                      <p>Public</p>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
           </tbody>
         </table> 
       <%= will_paginate @wikis %>
     </div>
+    <%= link_to "New wiki", new_wiki_path, class: 'btn btn-primary' %>
   <% end %>
 
   <% unless @user.present? %>

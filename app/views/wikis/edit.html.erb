@@ -1,6 +1,5 @@
 <h1><%= @wiki.title %></h1>
-
-  <div class="form-group">
+  <div class="form-group left">
     <%= form_for @wiki do |f| %>
       <% f.label :title -%>
       <%= f.text_area :title, rows: 1, class: 'form-control', placeholder: "Enter wiki title" %>
@@ -10,12 +9,12 @@
       <%= f.label "Private" %> <br />
       <%= f.check_box :private, {}, true, false %>
       <% end %>
-    <br />
-    <%= f.submit "Save", class: 'btn btn-success' %>
-    <%= link_to "Back", wikis_path, class: 'btn btn-primary' %>
-    <% if @wiki.private? && policy(@wiki).destroy? %>
-    <%= link_to "Add Collaborators", new_wiki_collaborator_path(@wiki), class: 'btn btn-primary' %>
+   <br />
+      <%= f.submit "Save", class: 'btn btn-success' %>
+      <%= link_to "Back", wikis_path, class: 'btn btn-primary' %>
+      <% if @wiki.private? && policy(@wiki).destroy? %>
+      <%= link_to "Add Collaborators", new_wiki_collaborator_path(@wiki), class: 'btn btn-primary' %>
+      <% end %>
     <% end %>
-  <% end %>
   </div>
-   
+  <%= render 'markdown' %>    
