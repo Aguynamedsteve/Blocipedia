@@ -58,6 +58,9 @@ gem 'pundit'
 
 gem 'stripe'
 
+gem 'epic-editor-rails'
+
+
 
 
 

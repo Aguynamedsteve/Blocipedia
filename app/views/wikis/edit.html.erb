@@ -1,5 +1,5 @@
 <h1><%= @wiki.title %></h1>
-  <div class="form-group left">
+  <div class="form-group left" id="epiceditor">
     <%= form_for @wiki do |f| %>
       <% f.label :title -%>
       <%= f.text_area :title, rows: 1, class: 'form-control', placeholder: "Enter wiki title" %>
