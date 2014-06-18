@@ -11,6 +11,8 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'pg'
+  gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
+  gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
