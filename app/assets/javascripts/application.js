@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootsy
 //= require turbolinks
 //= require bootstrap
-//= require 'epiceditor'  
+//= require epiceditor 
 //= require_tree .

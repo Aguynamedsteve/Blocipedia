@@ -19,3 +19,5 @@
 /config/application.yml
 
 .env
+
+stripe.env

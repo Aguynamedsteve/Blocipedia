@@ -12,9 +12,9 @@ var opts = {
     autoSave: 100
   },
   theme: {
-    base: '/themes/base/epiceditor.css',
-    preview: '/themes/preview/preview-dark.css',
-    editor: '/themes/editor/epic-dark.css'
+    base: '/assets/stylesheets/epiceditor.css',
+    preview: '/assets/stylesheets/preview-dark.css',
+    editor: '/assets/stylesheets/epic-dark.css'
   },
   button: {
     preview: true,
@@ -34,4 +34,4 @@ var opts = {
   },
   autogrow: false
 }
-var editor = new EpicEditor(opts);
+var editor = new EpicEditor(opts).load();
