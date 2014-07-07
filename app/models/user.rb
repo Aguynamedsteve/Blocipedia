@@ -4,11 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-
+  has_many :wikis
   has_many :wikis
   has_many :collaborators
   has_many :collaborations, through: :collaborators, source: :wiki
   before_create :set_role
+
+  mount_uploader :avatar, AvatarUploader
 
   ROLES = %w[member admin premium]
   

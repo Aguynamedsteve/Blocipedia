@@ -44,5 +44,6 @@ gem 'epic-editor-rails'
 gem 'bootsy'
 gem 'better_errors'
 gem 'binding_of_caller'
-gem 'pry-rails'
-
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'

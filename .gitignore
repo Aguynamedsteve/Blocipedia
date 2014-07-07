@@ -21,3 +21,5 @@
 .env
 
 stripe.env
+
+public/uploads
