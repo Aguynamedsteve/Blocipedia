@@ -10,6 +10,15 @@
     <% end %>
   <% else %>
     <%= link_to "Sign In", new_user_session_path %> |
-    <%= link_to "Sign Up", new_user_registration_path %>
+    <%= link_to "Sign Up", new_user_registration_path %> |
   <% end %>
+  <span><a href="#search" class="btn btn-primary">Search</a></span>
 </ul>
+
+<div id="search">
+    <button type="button" class="close">×</button>
+    <form>
+        <input type="search" value="" placeholder="type keyword(s) here" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
